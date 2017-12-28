@@ -2,27 +2,32 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-               <h3>Item Details</h3>
+               <h3>New Item</h3>
                <hr>
             </div>
         </div>
         <div class="row row-content">
+<!--
             <div class="col-xs-12" ng-if="!showItem">
                 <h3>{{message}}</h3>
             </div>
-            <div class="col-xs-12" ng-if="showItem">
+-->
+<!--            <div class="col-xs-12" ng-if="showItem">-->
+            <div class="col-xs-12">
+<!--
                 <button class="btn btn-xs btn-primary pull-right"
                     type="button" ui-sref="app.menu">
                     Back to Menu
                 </button> 
+-->
                 <p>{{item._id}}</p>
                 <p>{{item.itemRef}}</p>
                 <p>{{item.location}}</p>
                 <p>{{item.description}}</p>
                 <p>{{item.note}}</p>
-                <p>Required: {{itemForm.itemref.$error.required}}</p>
-                <p>Pristine: {{itemForm.itemref.$pristine}}</p>
-                <p>Form Pristine: {{itemForm.$pristine}}</p>
+                <p>Required: {{newItemForm.itemref.$error.required}}</p>
+                <p>Pristine: {{newItemForm.itemref.$pristine}}</p>
+                <p>Form Pristine: {{newItemForm.$pristine}}</p>
 <!--
                 <div class="media">
                     <div class="media-left media-middle">
@@ -41,13 +46,13 @@
 -->
             </div>
             <div class="col-xs-12 col-sm-9">
-                <form class="form-horizontal" role="form" name="itemForm" ng-submit="saveItemForm()" novalidate>
+                <form class="form-horizontal" role="form" name="newItemForm" ng-submit="savenewItemForm()" novalidate>
                     <div class="form-group">
                         <label for="itemref" class="col-sm-2 control-label">Item Reference Code</label>
                         <div class="col-sm-10">
                         <input type="text" class="form-control" id="itemref" name="itemref" placeholder="Enter Unique ID string (e.g., MacBook79)"
                         ng-model="item.itemRef" required>
-                          <span ng-show="itemForm.itemref.$error.required && !itemForm.itemref.$pristine" class="help-block">A reference string is required.</span>
+                          <span ng-show="newItemForm.itemref.$error.required && !newItemForm.itemref.$pristine" class="help-block">A reference string is required.</span>
                       </div>
                     </div>
                     <div class="form-group">
@@ -55,7 +60,7 @@
                         <div class="col-sm-10">
                         <input type="text" class="form-control" id="description" name="description" placeholder="Description of item"
                         ng-model="item.description" required>
-<!--                          <span ng-show="itemForm.description.$error.required && !itemForm.description.$pristine" class="help-block">A description string is required.</span>-->
+<!--                          <span ng-show="newItemForm.description.$error.required && !newItemForm.description.$pristine" class="help-block">A description string is required.</span>-->
                       </div>
                     </div>
                     <div class="form-group">
@@ -63,7 +68,7 @@
                         <div class="col-sm-10">
                         <input type="text" class="form-control" id="location" name="location" placeholder="Description of item"
                         ng-model="item.location" required>
-<!--                          <span ng-show="itemForm.location.$error.required && !itemForm.location.$pristine" class="help-block">A location string is required.</span>-->
+<!--                          <span ng-show="newItemForm.location.$error.required && !newItemForm.location.$pristine" class="help-block">A location string is required.</span>-->
                       </div>
                     </div>
                     <div class="form-group">
@@ -71,12 +76,13 @@
                         <div class="col-sm-10">
                         <input type="text" class="form-control" id="note" name="note" placeholder="Note for item"
                         ng-model="item.note" required>
-<!--                          <span ng-show="itemForm.note.$error.required && !itemForm.note.$pristine" class="help-block">A note string is required.</span>-->
+<!--                          <span ng-show="newItemForm.note.$error.required && !newItemForm.note.$pristine" class="help-block">A note string is required.</span>-->
                       </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-primary" ng-disabled="feedbackForm.$invalid">Send Feedback</button>
+                            <button type="submit" class="btn btn-primary" ng-disabled="newItemForm.$invalid">Save</button>
+                            <button type="button" class="btn btn-primary" ng-click="cancelNewItem()">Cancel</button>
                         </div>
                     </div>
                 </form>

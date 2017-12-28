@@ -178,30 +178,59 @@ angular.module('inventoryApp')
 
     $scope.item = {};
     $scope.showItem = false;
-    $scope.message = "Loading ...";
     $scope.isEditable = false;
+    $scope.message = "";
+    
+//    console.log("ItemDetailController:", $stateParams.id);
+//    console.log($stateParams.id);
+    console.log("In ItemDetailController");
+    console.log($stateParams);
+    
+    if ($stateParams.id) {
+        $scope.newItem = false;
+        $scope.message = "Loading ...";
 
-    $scope.item = itemFactory.get({
+        $scope.item = itemFactory.get({
             id: $stateParams.id
         })
         .$promise.then(
             function (response) {
                 $scope.item = response;
+                console.log("Got item from DB:");
+                console.log($scope.item);
                 $scope.showItem = true;
             },
             function (response) {
                 $scope.message = "Error: " + response.status + " " + response.statusText;
             }
-        );
+        )
+    } else {
+        $scope.showItem = true;
+        $scope.newItem = true;
+    }
 
-//    $scope.saveItem = 
+    $scope.saveItem = function () {
+        console.log("In ItemDetailController:saveItem");
+        console.log("$scope.item:");
+        console.log($scope.item);
+        itemFactory.save($scope.item);
+        $state.go("app");
+//            .promise.then(
+//                function (response) {
+//                    console.log("saveItem response:")
+//                    console.log(response);
+//                }
+//            )
+    }
     
 }])
 
 //.controller('NewItemController', ['$scope', '$state', '$stateParams', 'itemFactory', function ($scope, $state, $stateParams, itemFactory) {
 //
 //    $scope.item = {};
-//
+//    
+//    $scope.
+
 //    $scope.item = itemFactory.get({
 //            id: $stateParams.id
 //        })
@@ -214,7 +243,7 @@ angular.module('inventoryApp')
 //                $scope.message = "Error: " + response.status + " " + response.statusText;
 //            }
 //        );
-//
+
 //}])
 
 //.controller('AboutController', ['$scope', 'corporateFactory', function ($scope, corporateFactory) {
