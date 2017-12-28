@@ -165,17 +165,23 @@ angular.module('inventoryApp')
     $scope.showItemDetail = function(itemid) {
         console.log("Show detail for item", itemid);
         $state.go('app.itemdetails', {id: itemid});
+    };
+
+    $scope.addNewItem = function() {
+        console.log("Add new item");
+        $state.go('app.itemdetails', {id: null});
     }
 
 }])
 
 .controller('ItemDetailController', ['$scope', '$state', '$stateParams', 'itemFactory', function ($scope, $state, $stateParams, itemFactory) {
 
-    $scope.dish = {};
+    $scope.item = {};
     $scope.showItem = false;
     $scope.message = "Loading ...";
+    $scope.isEditable = false;
 
-    $scope.dish = itemFactory.get({
+    $scope.item = itemFactory.get({
             id: $stateParams.id
         })
         .$promise.then(
@@ -188,7 +194,28 @@ angular.module('inventoryApp')
             }
         );
 
+//    $scope.saveItem = 
+    
 }])
+
+//.controller('NewItemController', ['$scope', '$state', '$stateParams', 'itemFactory', function ($scope, $state, $stateParams, itemFactory) {
+//
+//    $scope.item = {};
+//
+//    $scope.item = itemFactory.get({
+//            id: $stateParams.id
+//        })
+//        .$promise.then(
+//            function (response) {
+//                $scope.item = response;
+//                $scope.showItem = true;
+//            },
+//            function (response) {
+//                $scope.message = "Error: " + response.status + " " + response.statusText;
+//            }
+//        );
+//
+//}])
 
 //.controller('AboutController', ['$scope', 'corporateFactory', function ($scope, corporateFactory) {
 //

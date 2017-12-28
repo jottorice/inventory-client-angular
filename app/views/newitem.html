@@ -15,12 +15,6 @@
                     type="button" ui-sref="app.menu">
                     Back to Menu
                 </button> 
-<!--
-                <button class="btn btn-xs btn-primary pull-right"
-                    type="button" ng-click="app.menu">
-                    Edit Item
-                </button> 
--->
                 <p>{{item._id}}</p>
                 <p>{{item.itemRef}}</p>
                 <p>{{item.location}}</p>
@@ -29,7 +23,6 @@
                 <p>Required: {{itemForm.itemref.$error.required}}</p>
                 <p>Pristine: {{itemForm.itemref.$pristine}}</p>
                 <p>Form Pristine: {{itemForm.$pristine}}</p>
-                <p>Editable: {{$scope.isEditable}}</p>
 <!--
                 <div class="media">
                     <div class="media-left media-middle">
@@ -83,7 +76,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-primary" ng-disabled="itemForm.$invalid || !$scope.isEditable">Save Item</button>
+                            <button type="submit" class="btn btn-primary" ng-disabled="feedbackForm.$invalid">Send Feedback</button>
                         </div>
                     </div>
                 </form>

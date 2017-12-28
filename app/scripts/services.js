@@ -34,7 +34,6 @@ angular.module('inventoryApp')
 //
 .factory('itemFactory', ['$resource', 'baseURL', function ($resource, baseURL) {
 
-
     return $resource(baseURL + "items/:id", null, {
             'update': {
                 method: 'PUT'

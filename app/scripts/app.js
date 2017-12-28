@@ -27,7 +27,7 @@ angular.module('inventoryApp', ['ui.router','ngResource','ngDialog'])
             .state('app.itemdetails', {
                 url: 'items/:id',
                 params: {
-                    id: "5a3f392a1583770004f054ae"
+                    id: null
                 },
                 views: {
                     'content@': {
@@ -42,9 +42,20 @@ angular.module('inventoryApp', ['ui.router','ngResource','ngDialog'])
                         console.log("url", window.location);
                         return $stateParams.id;
                     }
-        }
-
+                }
             })
+
+//            // route for the newitem page
+//            .state('app.newitem', {
+//                url: 'items',
+//                views: {
+//                    'content@': {
+//                        templateUrl : 'views/newitem.html',
+//                        controller  : 'NewItemController'
+//                   }
+//                }
+//
+//            })
 
 //            // route for the aboutus page
 //            .state('app.aboutus', {
